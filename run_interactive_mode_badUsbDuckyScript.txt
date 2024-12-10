@@ -1,4 +1,4 @@
-REM Clone GitHub repo and run the interactive script
+REM Clone GitHub repo, install dependencies, and run the interactive script
 DELAY 1000
 GUI  // Open Raspberry Pi dropdown
 DELAY 500
@@ -12,5 +12,9 @@ DELAY 2000
 STRING cd ghettoFlipperZeroPwManager
 ENTER
 DELAY 500
+STRING pip install -r requirements.txt
+ENTER
+DELAY 2000
 STRING python3 script.py
 ENTER
+DELAY 2000

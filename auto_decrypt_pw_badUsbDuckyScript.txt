@@ -23,5 +23,3 @@ REM Automatically paste Base64 string into the program and copy the result
 STRING decrypt f3wI0bYGLNofcykU+3DlApiduCos4X53ZeCXNUtRxik=
 ENTER
 DELAY 1000
-STRING Y
-ENTER
