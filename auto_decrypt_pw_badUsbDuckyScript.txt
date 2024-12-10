@@ -20,6 +20,6 @@ ENTER
 DELAY 2000
 
 REM Automatically paste Base64 string into the program and copy the result
-STRING decrypt f3wI0bYGLNofcykU+3DlApiduCos4X53ZeCXNUtRxik=
+STRING decrypt <enter_encrypted_base64_string_here>
 ENTER
 DELAY 1000
