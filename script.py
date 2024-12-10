@@ -2,7 +2,6 @@ import base64
 import hashlib
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
-import argparse
 import pyperclip
 
 # Constants
@@ -41,8 +40,6 @@ def main():
     print("  decrypt <base64 encrypted string>")
     print("  exit")
     
-    key = input("Enter your pre-shared key (PSK): ")
-    
     while True:
         command = input(">>> ").strip().split(" ", 1)
         if len(command) < 2 and command[0] not in ["exit"]:
@@ -51,6 +48,9 @@ def main():
         
         action = command[0].lower()
         argument = command[1] if len(command) > 1 else ""
+
+        if action in ["encrypt", "decrypt"]:
+            key = input("Enter your pre-shared key (PSK): ")
 
         if action == "encrypt":
             encrypted = encrypt(argument, key)
