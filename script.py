@@ -29,6 +29,21 @@ def decrypt(encrypted_base64, key):
     decrypted = cipher.decrypt(encrypted[BLOCK_SIZE:])
     return unpad(decrypted).decode()
 
+def verify_encrypted(base64_str):
+    try:
+        # Decode Base64
+        decoded_data = base64.b64decode(base64_str)
+        print("Decoded data (hex):", binascii.hexlify(decoded_data).decode())
+        
+        # Check if it's readable ASCII
+        try:
+            print("Decoded data (text):", decoded_data.decode('utf-8'))
+            print("Likely not encrypted (contains readable text).")
+        except UnicodeDecodeError:
+            print("Non-readable data detected. Likely encrypted.")
+    except (binascii.Error, ValueError) as e:
+        print("Invalid Base64 string.")
+
 def copy_to_clipboard(text):
     pyperclip.copy(text)
     print("Copied to clipboard.")
@@ -38,6 +53,7 @@ def main():
     print("Commands:")
     print("  encrypt <plaintext password>")
     print("  decrypt <base64 encrypted string>")
+    print("  verify <base64 encrypted string>")
     print("  exit")
     
     while True:
@@ -67,11 +83,13 @@ def main():
                     copy_to_clipboard(decrypted)
             except Exception as e:
                 print(f"Error during decryption: {e}")
+        elif action == "verify":
+            verify_encrypted(argument)
         elif action == "exit":
             print("Exiting.")
             break
         else:
-            print("Unknown command. Use 'encrypt <text>', 'decrypt <text>', or 'exit'.")
+            print("Unknown command. Use 'encrypt <text>', 'decrypt <text>', 'verify <text>', or 'exit'.")
 
 if __name__ == "__main__":
     try:
