@@ -49,16 +49,16 @@ def main():
         action = command[0].lower()
         argument = command[1] if len(command) > 1 else ""
 
-        if action in ["encrypt", "decrypt"]:
-            key = input("Enter your pre-shared key (PSK): ")
-
         if action == "encrypt":
+            key = input("Enter your pre-shared key (PSK): ")
             encrypted = encrypt(argument, key)
             print("Encrypted Base64:")
             print(encrypted)
             if input("Would you like to copy to clipboard? [Y/N]: ").strip().lower() == 'y':
                 copy_to_clipboard(encrypted)
         elif action == "decrypt":
+            print("Decrypting...")
+            key = input("Enter your pre-shared key (PSK): ")
             try:
                 decrypted = decrypt(argument, key)
                 print("Decrypted Plaintext:")
