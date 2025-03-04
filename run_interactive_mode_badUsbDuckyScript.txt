@@ -1,3 +1,4 @@
+DEFAULT_DELAY 120  # Ensures proper pacing for typing
 REM Clone GitHub repo, install dependencies, and run the interactive script
 DELAY 1000
 GUI  // Open Raspberry Pi dropdown
